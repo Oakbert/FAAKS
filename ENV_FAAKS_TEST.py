@@ -1,7 +1,10 @@
 # An addition that would like to be made is a coordinate system setup to tell the motors where to go instead of how long to run for
 # This would remove the issue of friction causing the wheel to slide, throwing the robot off and allowing it fix itself rather than being offset for the rest of the 
 # collection. However, I am not sure how to do this and have not been able to find any documentation on this yet. I know that it is possible but I have not figured
-# it out yet
+# it out yet 
+
+# Motor RPM adjustments will need to be added in addition to sleep time, these changes should not be difficult but it is just a matter of getting the RPI setup 
+# and running some tests to determine what sleep time and RPM speed is the best
 
 from gpiozero import Device, Button, Motor
 from gpiozero.pins.mock import MockFactory, MockPWMPin
