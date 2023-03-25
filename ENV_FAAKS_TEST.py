@@ -1,7 +1,13 @@
+# An addition that would like to be made is a coordinate system setup to tell the motors where to go instead of how long to run for
+# This would remove the issue of friction causing the wheel to slide, throwing the robot off and allowing it fix itself rather than being offset for the rest of the 
+# collection. However, I am not sure how to do this and have not been able to find any documentation on this yet. I know that it is possible but I have not figured
+# it out yet
+
 from gpiozero import Device, Button, Motor
 from gpiozero.pins.mock import MockFactory, MockPWMPin
 from time import sleep
 
+# MockFactory is required to simulate RPI pins, this will be removed and adjusted accordingly once the RPI is setup and actual pins are defined on the RPI
 Device.pin_factory = MockFactory(pin_class=MockPWMPin)
 
 motor1 = Motor(6,16)
@@ -12,6 +18,7 @@ button = Button(2)
 # vials is the # of vials that will have fractions in them
 # vial is a loop counter
 # sleep(x) is to tell the code to wait for x seconds until continuing. Used to adjust run times and stop times
+# this script is currently setup to run 100 fractions, however this can be adjusted depending on how many fractions will be collected by changing the vial parameter
 def Run_Column(vial,vials,time):
     if vial != 100:
         for i in range (vials):
@@ -79,6 +86,9 @@ def pressed():
 button.when_held = held
 button.when_released = released
 
+
+# for loop used to choose which size column will be ran by simulating button presses. This loop will be removed after setting up the RPI because we will be able to 
+# physically press the button, removing the need for simulation
 for i in range (0):
     print('pushing the button')
     button.pin.drive_low()
@@ -86,6 +96,8 @@ for i in range (0):
     button.pin.drive_high()
     sleep(0.2)
 
+# for loop used to run the fraction collector after selecting the size of the column by simulating button hold. This loop will be removed after setting up the RPI
+# because we will be able to physically hold the button, removing the need for simulation
 for i in range (1):
     print('holding the button')
     button.pin.drive_low()
