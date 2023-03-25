@@ -60,7 +60,7 @@ btn_idx = 0
 
 def call():
     global btn_idx
-    time_list = [0, 1.67, 3.33, 5]
+    time_list = [0.67, 1.67, 3.33, 5]
     list(map(int,time_list))
     Run_Column(0, 10, time_list[btn_idx])
     print('Column has Finished')
